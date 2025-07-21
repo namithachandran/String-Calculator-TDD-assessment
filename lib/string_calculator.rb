@@ -10,6 +10,7 @@ class StringCalculator
     end
 
     numbers = str_numbers.split(Regexp.new(delimiter)).map(&:to_i)
+    numbers.reject! { |num| num > 1000 }
 
     negative_numbers = numbers.select { |num| num < 0 }
     raise "negative numbers not allowed: #{negative_numbers.join(', ')}" unless negative_numbers.empty?
